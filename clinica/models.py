@@ -23,8 +23,8 @@ O RegexValidator usa a expressão regular ^[A-Z]{2}/\d{5}$:
 """
 
 crm_validator = RegexValidator(
-    regex=r'^[d]{2}/\d{5}$',
-    message='O CRM deve estar no formato XX/XXXXX (ex: SP/12345)',
+    regex=r'^d{2}/\d{5}$',
+    message='O CRM deve estar no formato XX/XXXXX (ex: 11/12345)',
 )
 
 
@@ -34,7 +34,7 @@ class Medico(models.Model):
         max_length=8,
         unique=True,
         validators=[crm_validator],
-        help_text="Formato: XX/XXXXX (ex: SP/12345)"
+        help_text="Formato: XX/XXXXX (ex: 11/12345)"
     )
     especialidade = models.CharField(max_length=100, choices=[
         ('clinico', 'Clínico Geral'),

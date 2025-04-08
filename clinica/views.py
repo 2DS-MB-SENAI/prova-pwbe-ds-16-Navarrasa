@@ -45,14 +45,14 @@ def criar_consulta(request):
             form = ConsultaForm(request.POST)
             if form.is_valid():
                 form.save()
-                return render(request, 'clinica/sucesso.html', {'mensagem': 'Consulta criada com sucesso!'})
+                return render(request, 'clinica/sucesso.html', {'mensagem': 'Consulta criada com sucesso!'}, status=200)
         else:
             form = ConsultaForm()
 
         medicos = Medico.objects.all()
-        return render(request, 'clinica/form_consulta.html', {'form': form, 'medicos': medicos})
+        return render(request, 'clinica/form_consulta.html', {'form': form, 'medicos': medicos}, status=200)
     except Exception as e:
-        return render(request, 'clinica/erro.html', {'mensagem': str(e)})
+        return render(request, 'clinica/erro.html', {'mensagem': str(e)},status=400)
 
 def detalhes_consulta(request, pk):
     """
@@ -69,7 +69,7 @@ def detalhes_consulta(request, pk):
     try:
 
         consulta = Consulta.objects.get(id=pk)
-        return render(request, 'clinica/detalhes_consulta.html', {'consulta': consulta})
+        return render(request, 'clinica/detalhes_consulta.html', {'consulta': consulta},status=200)
     
     except Consulta.DoesNotExist:
-        return render(request, 'clinica/erro.html', {'mensagem': 'Consulta não encontrada.'})
+        return render(request, 'clinica/erro.html', {'mensagem': 'Consulta não encontrada.'},status=404)
