@@ -33,7 +33,7 @@ def listar_servicos(request):
         return Response({"detail": "Método não permitido."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 @api_view(['GET'])
-def detalhes_servico(request, pk):
+def detalhes_servico(request, pk):  
     try:
         servico = Servico.objects.get(pk=pk)
         serializer = ServicosSerializer(servico)
@@ -43,6 +43,7 @@ def detalhes_servico(request, pk):
 
 
 # Agendamentos
+@api_view(['GET', 'POST'])
 def listar_agendamentos(request):
 
     # Função para listar todos os agendamentos cadastrados no sistema.
