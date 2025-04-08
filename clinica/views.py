@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Medico, Consulta
 from .forms import ConsultaForm
-from rest_framework import status
 from django.shortcuts import get_object_or_404
+from .filters import MedicoFilter
 
 # Create your views here.
 
@@ -12,12 +12,22 @@ def listar_medicos(request):
 
     -> Obtém todos os médicos do banco de dados e os passa para o template 'listar_medicos.html'.
     -> O template exibe uma tabela com informações sobre cada médico, incluindo nome, especialidade, CRM e e-mail.
+    -> Inclui filtro por especialidade.
+    -> O filtro é aplicado com base nos parâmetros GET da requisição.
+    -> O queryset é filtrado usando o MedicoFilter, que permite filtrar médicos com base em critérios como nome e especialidade.
 
     """
-    medicos = get_object_or_404(Medico.objects.all())
-    # Aplicando o filtro de médicos
-    # filtro = MedicoFilter(request.GET, queryset=medicos)
-    return render(request, 'clinica/listar_medicos.html', {'medicos': medicos})
+    # Obtém o queryset base
+    medicos_queryset = Medico.objects.all()
+    
+    # Aplica o filtro com base nos parâmetros GET
+    filtro = MedicoFilter(request.GET, queryset=medicos_queryset)
+    
+    context = {
+        'medicos': filtro.qs,  # Usa o queryset filtrado
+        'filtro': filtro,  # Passa o filtro para o template (para o formulário)
+    }
+    return render(request, 'clinica/listar_medicos.html', context)
 
 def criar_consulta(request):
     """

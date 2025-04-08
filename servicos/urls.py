@@ -22,7 +22,7 @@ Setando as URLS principais do servidor Django (url raíz)
 """
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('clinica', include('clinica.urls')),
+    path('clinica/', include('clinica.urls')),
 ]
     # path('auth/', include('custom_auth.urls')),
     # path('agenda/', include('agenda.urls')),

@@ -16,7 +16,6 @@
                 <strong>Especialidade:</strong> {{ medico.especialidade }}<br>
                 <strong>Telefone:</strong> {{ medico.telefone }}<br>
                 <strong>Email:</strong> {{ medico.email }}<br>
-                <a href="{% url 'clinica:form_consulta' medico.id %}">Agendar Consulta</a>
             </li>
         </div>
     {% endfor %}
