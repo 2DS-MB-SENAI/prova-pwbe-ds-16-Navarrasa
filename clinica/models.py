@@ -23,7 +23,7 @@ O RegexValidator usa a expressão regular ^[A-Z]{2}/\d{5}$:
 """
 
 crm_validator = RegexValidator(
-    regex=r'^[A-Z]{2}/\d{5}$',
+    regex=r'^[d]{2}/\d{5}$',
     message='O CRM deve estar no formato XX/XXXXX (ex: SP/12345)',
 )
 
