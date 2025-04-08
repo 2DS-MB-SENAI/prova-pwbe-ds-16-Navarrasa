@@ -14,8 +14,8 @@ Model Médicos:
 
 # Validador para o formato XX/XXXXX
 """
-O RegexValidator usa a expressão regular ^[A-Z]{2}/\d{5}$:
-^[A-Z]{2}: Começa com exatamente 2 letras maiúsculas
+O RegexValidator usa a expressão regular ^\d{2}/\d{5}$:
+^\d{2}: Começa com exatamente 2 números inteiros 1-9
 /: Seguido de uma barra
 \d{5}$: Termina com exatamente 5 dígitos
 :https://docs.djangoproject.com/en/5.2/ref/validators/#regexvalidator

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Medico, Consulta
 from .forms import ConsultaForm
-from django.shortcuts import get_object_or_404
 from .filters import MedicoFilter
 
 # Create your views here.
