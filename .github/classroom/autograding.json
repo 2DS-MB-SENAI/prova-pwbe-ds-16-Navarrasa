@@ -116,7 +116,7 @@
     },
     {
       "name": "17. Teste GET Agendamento - Detalhe",
-      "run": "python manage.py shell -c \"from django.test import Client; from agenda.models import Servico, Agendamento; from django.utils import timezone; Servico.objects.all().delete(); Agendamento.objects.all().delete(); s = Servico.objects.create(nome='Exame', duracao=45, preco=300.00); data_futura = timezone.now() + timezone.timedelta(days=2); a = Agendamento.objects.create(servico=s, data_hora=data_futura, cliente_nome='Ana', cliente_email='ana@teste.com'); r = Client().get(f'/api/agendamentos/{a.id}/'); print('PASS' if r.status_code == 200 and f'\\\"servico\\\":{s.id}' in str(r.content) and 'Ana' in str(r.content) else f'FAIL {r.content} \\\"servico\\\": {s.id}')\"",
+      "run": "python manage.py shell -c \"from django.test import Client; from agenda.models import Servico, Agendamento; from django.utils import timezone; Servico.objects.all().delete(); Agendamento.objects.all().delete(); s = Servico.objects.create(nome='Exame', duracao=45, preco=300.00); data_futura = timezone.now() + timezone.timedelta(days=2); a = Agendamento.objects.create(servico=s, data_hora=data_futura, cliente_nome='Ana', cliente_email='ana@teste.com'); r = Client().get(f'/api/agendamentos/{a.id}/'); print('PASS' if r.status_code == 200 and f'\"servico\":{s.id}' in str(r.content) and 'Ana' in str(r.content) else f'FAIL {r.content} \\\"servico\\\": {s.id}')\"",
       "output": "PASS",
       "timeout": 20,
       "points": 6

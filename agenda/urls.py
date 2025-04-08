@@ -8,5 +8,5 @@ urlpatterns = [
 
     # EndPoints sobre agendamentos
     path('api/agendamentos/', listar_agendamentos, name='listar_agendamentos'),
-    path('api/agendamentos/<int:pk>', detalhes_agendamento, name='detalhes_agendamento'),
+    path('api/agendamentos/<int:pk>/', detalhes_agendamento, name='detalhes_agendamento'),
 ]
