@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Médicos</title>
+</head>
+<body>
+    <h1>Liste seus médicos aqui!</h1>
+    <ul>
+    {% for medico in medicos %}
+        <div>
+            <li>
+                <strong>Nome:</strong> {{ medico.nome }}<br>
+                <strong>CRM:</strong> {{ medico.crm }}<br>
+                <strong>Especialidade:</strong> {{ medico.especialidade }}<br>
+                <strong>Telefone:</strong> {{ medico.telefone }}<br>
+                <strong>Email:</strong> {{ medico.email }}<br>
+                <a href="{% url 'clinica:form_consulta' medico.id %}">Agendar Consulta</a>
+            </li>
+        </div>
+    {% endfor %}
+    </ul>
+</body>
+</html>
