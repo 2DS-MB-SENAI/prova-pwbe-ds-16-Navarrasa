@@ -42,7 +42,7 @@ class Medico(models.Model):
         ('dermatologista', 'Dermatologista'),
         ('pediatra', 'Pediatra'),
         ('ortopedista', 'Ortopedista'),
-        ("car", "CAR")
+        ('CAR', 'Cardiologista')
     ])
     email = models.EmailField(max_length=100, unique=False, null=True, blank=True)
 
