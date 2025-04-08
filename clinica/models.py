@@ -44,6 +44,7 @@ class Medico(models.Model):
         ('ortopedista', 'Ortopedista'),
         ("car", "CAR")
     ])
+    email = models.EmailField(max_length=100, unique=False, null=True, blank=True)
 
     def __str__(self):
         return f"{self.nome} - {self.crm}"
